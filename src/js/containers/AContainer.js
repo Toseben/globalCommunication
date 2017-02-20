@@ -8,13 +8,14 @@ class AContainer extends React.Component {
 
   render () {
     const {userData} = this.props;
+    const radius = "1";
 
     return (
       <Scene>
         <Camera/>
-        <Earth src="url(../../assets/env.jpg)"/>
-        <Users userData={userData}/>
-        <a-sky color="#ECECEC"></a-sky>
+        <Earth src="url(../../assets/earth.jpg)" radius={radius}/>
+        <Users userData={userData} radius={radius}/>
+        <a-sky color="#1b242e"></a-sky>
       </Scene>
     );
   }

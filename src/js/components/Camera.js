@@ -8,15 +8,15 @@ class Camera extends React.Component {
       <Entity
           id="camera"
           camera
-          position="0 1 4"
+          position="0 1 2"
           orbit-controls="
             autoRotate: false;
             target: #earth_GEO;
             enableDamping: true;
             dampingFactor: 0.125;
             rotateSpeed: 0.25;
-            minDistance: 2.5;
-            maxDistance: 5;
+            minDistance: 1.5;
+            maxDistance: 3;
             enableKeys: false">
       </Entity>
     );

@@ -5,6 +5,7 @@ AFRAME.registerComponent('user', {
 
   init: function () {
 
+    // Generate User geometry
     var radius = 0.075, segments = 64, rings = 32;
     var geometry = new THREE.SphereBufferGeometry( radius, segments, rings );
     var mesh = this.el.getOrCreateObject3D('mesh', THREE.Mesh);
@@ -13,17 +14,19 @@ AFRAME.registerComponent('user', {
 });
 
 class Users extends React.Component {
-  render() {
+
+  componentDidMount() {
     const {userData} = this.props;
     const userCount = userData.results.length;
 
-    var users = [];
+    this.users = [];
     var usersPos = [];
     for (var i = 0; i < userCount; i++) {
 
       var boolean = true;
       var idx = 0;
 
+      // Generate User Position
       do {
 
         var error = 0;
@@ -39,7 +42,7 @@ class Users extends React.Component {
         }
 
         idx += 1;
-        if (error === 0 || idx > 4) {
+        if (error === 0 || idx > 10) {
           boolean = false;
         }
 
@@ -51,17 +54,21 @@ class Users extends React.Component {
       while ( boolean );
       usersPos.push(pos);
 
+      // Push Users to array
       var gender = userData.results[i].gender;
+      var name = userData.results[i].name.first;
       var color = gender === 'female' ? '#e74c3c' : '#3498db';
-      users.push(
-        <Entity user position={[pos.x, pos.y, pos.z]} key={i} id={"user_" + i}
+      this.users.push(
+        <Entity user position={[pos.x, pos.y, pos.z]} key={i} id={"user_" + name}
           material={{color: color}}></Entity>
       );
     }
+  }
 
+  render() {
     return (
-      <Entity id="user_GRP">
-        {users}
+      <Entity id="users_GRP">
+        {this.users}
       </Entity>
     );
   }

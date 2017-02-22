@@ -10,7 +10,7 @@ class Users extends React.Component {
     const userCount = userData.results.length;
 
     this.users = [];
-    var usersPos = [];
+    this.usersPos = [];
     for (var i = 0; i < userCount; i++) {
 
       var boolean = true;
@@ -23,9 +23,9 @@ class Users extends React.Component {
         var pos = new THREE.Vector3(Math.random(), Math.random(), Math.random());
         pos.subScalar(0.5).normalize().multiplyScalar(this.props.radius);
 
-        var arrayLength = usersPos.length;
+        var arrayLength = this.usersPos.length;
         for (var i = 0; i < arrayLength; i++) {
-          var dist = pos.distanceTo(usersPos[i]);
+          var dist = pos.distanceTo(this.usersPos[i]);
           if (dist < 0.15) {
             error += 1;
           }
@@ -42,18 +42,34 @@ class Users extends React.Component {
       }
 
       while ( boolean );
-      usersPos.push(pos);
+      this.usersPos.push(pos);
 
       this.users.push(
-        <Entity key={i} id={name + "_GRP"}>
-          <User position={usersPos[i]} userData={userData.results[i]}/>
-          <Tweet position={usersPos[i]} radius={this.props.radius}></Tweet>
+        <Entity key={i} id={userData.results[i].name.first + "_GRP"} signals={this.props.signals}>
+          <User position={this.usersPos[i]} userData={userData.results[i]}/>
+          <Tweet position={this.usersPos[i]} radius={this.props.radius} name={userData.results[i].name.first}></Tweet>
         </Entity>
       );
     }
   }
 
   render() {
+
+    const userData = this.props.userData;
+    const userCount = userData.results.length;
+
+    this.vittu = [];
+
+    if (this.usersPos != null) {
+      for (var i = 0; i < userCount; i++) {
+        this.vittu.push(
+          <Entity key={i} id={userData.results[i].name.first + "_GRP"} signals={this.props.signals}>
+            <User position={this.usersPos[i]} userData={userData.results[i]}/>
+          </Entity>
+        );
+      }
+    }
+
     return (
       <Entity id="users_GRP">
         {this.users}

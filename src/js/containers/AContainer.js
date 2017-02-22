@@ -11,7 +11,7 @@ class AContainer extends React.Component {
   constructor() {
     super()
     this.state = {
-      users: [],
+      signals: [],
       trigger: false
     };
     this.submitUser = this.submitUser.bind(this);
@@ -41,19 +41,20 @@ class AContainer extends React.Component {
       const gender = userData[i].gender;
       const name = userData[i].name.first;
       const pic = userData[i].picture.medium;
-      const newUser = {id: i, gender: gender, name: name, pic: pic, tweet: 0}
+      //const newUser = {id: i, gender: gender, name: name, pic: pic, tweet: 0}
+      const newUser = {tweet: 0}
       userArray.push(newUser);
     }
 
     this.setState({
-      users: userArray
+      signals: userArray
     })
   }
 
   // Trigger Randomised Tweets
   triggerTweet() {
     var container = this;
-    var userArray = this.state.users;
+    var userArray = this.state.signals;
     var userCount = userArray.length;
 
     randomTweet();
@@ -61,10 +62,10 @@ class AContainer extends React.Component {
       const randUser = Math.floor(Math.random() * userCount);
       const time = Math.random() * 1000;
 
-      var users = container.state.users;
-      users[randUser].tweet += 1;
+      var signals = container.state.signals;
+      signals[randUser].tweet += 1;
       container.setState({
-        users: users
+        signals: signals
       })
 
       setTimeout(randomTweet, time);
@@ -81,7 +82,7 @@ class AContainer extends React.Component {
       <Scene>
         <Camera/>
         <Earth src="url(../../assets/earth.jpg)" radius={radius}/>
-        <Users userData={userData} radius={radius}/>
+        <Users userData={userData} radius={radius} signals={this.state.signals}/>
         <a-sky color="#1b242e"></a-sky>
       </Scene>
     );

@@ -83,7 +83,7 @@ class AContainer extends React.Component {
     return (
       <Scene>
         <Camera/>
-        <Earth src="url(/globalCommunication/gh-pages/src/assets/earth.jpg)" radius={radius}/>
+        <Earth src="url(/globalCommunication/gh-pages/assets/earth.jpg)" radius={radius}/>
         <Users userData={userData} radius={radius} signals={this.state.signals}/>
         <a-sky color="#1b242e"></a-sky>
       </Scene>

@@ -21648,7 +21648,7 @@
 	        _aframeReact.Scene,
 	        null,
 	        _react2.default.createElement(_Camera2.default, null),
-	        _react2.default.createElement(_Earth2.default, { src: 'url(/globalCommunication/gh-pages/src/assets/earth.jpg)', radius: radius }),
+	        _react2.default.createElement(_Earth2.default, { src: 'url(/globalCommunication/gh-pages/assets/earth.jpg)', radius: radius }),
 	        _react2.default.createElement(_Users2.default, { userData: userData, radius: radius, signals: this.state.signals }),
 	        _react2.default.createElement('a-sky', { color: '#1b242e' })
 	      );

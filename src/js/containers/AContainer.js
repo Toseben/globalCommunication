@@ -1,5 +1,3 @@
-import React from 'react';
-
 class AContainer extends React.Component {
 
   // Render AFRAME HTML

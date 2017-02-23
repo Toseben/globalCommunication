@@ -8,7 +8,8 @@ AFRAME.registerComponent('tweet', {
 
   schema: {
     position: {type: 'vec3'},
-    radius: {type: 'number'}
+    radius: {type: 'number'},
+    tweet: {type: 'int'}
   },
 
   init: function () {
@@ -26,13 +27,6 @@ AFRAME.registerComponent('tweet', {
       animTime: { value: 0.0 }
     };
 
-    $({animValue: 0}).animate({animValue: 1}, {
-        duration: 2500,
-        step: function() {
-          element.uniforms.animTime.value = this.animValue;
-        }
-    });
-
     mesh.material = new THREE.ShaderMaterial( {
       uniforms: element.uniforms,
       vertexShader: vertexShader,
@@ -41,7 +35,20 @@ AFRAME.registerComponent('tweet', {
       transparent: true
     });
 
+  },
+
+  update: function () {
+    if (this.data.tweet !== 0) {
+      var element = this.el;
+      $({animValue: 0}).animate({animValue: 1}, {
+          duration: 2500,
+          step: function() {
+            element.uniforms.animTime.value = this.animValue;
+          }
+      });
+    }
   }
+
 });
 
 class Tweet extends React.Component {
@@ -52,7 +59,7 @@ class Tweet extends React.Component {
     const posString = pos.x + ' ' + pos.y + ' ' + pos.z;
 
     return (
-      <Entity tweet={{ position: posString, radius: this.props.radius }}
+      <Entity tweet={{ position: posString, radius: this.props.radius, tweet: this.props.tweet }}
         id={this.props.name + "_TWEET"}></Entity>
     );
   }

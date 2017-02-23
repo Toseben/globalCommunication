@@ -1,5 +1,5 @@
 var $ = require('jquery');
-const userCount = 10;
+const userCount = 25;
 const API_ROOT = 'https://randomuser.me/api';
 const GET_USERS_URL = API_ROOT + '?seed=random&inc=gender,name,picture&results=' + userCount;
 

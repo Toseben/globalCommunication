@@ -45,10 +45,7 @@ class Users extends React.Component {
       this.usersPos.push(pos);
 
       this.users.push(
-        <Entity key={i} id={userData.results[i].name.first + "_GRP"} signals={this.props.signals}>
-          <User position={this.usersPos[i]} userData={userData.results[i]}/>
-          <Tweet position={this.usersPos[i]} radius={this.props.radius} name={userData.results[i].name.first}></Tweet>
-        </Entity>
+        <User key={i} position={this.usersPos[i]} userData={userData.results[i]}/>
       );
     }
   }
@@ -58,14 +55,12 @@ class Users extends React.Component {
     const userData = this.props.userData;
     const userCount = userData.results.length;
 
-    this.vittu = [];
-
+    this.tweets = [];
     if (this.usersPos != null) {
       for (var i = 0; i < userCount; i++) {
-        this.vittu.push(
-          <Entity key={i} id={userData.results[i].name.first + "_GRP"} signals={this.props.signals}>
-            <User position={this.usersPos[i]} userData={userData.results[i]}/>
-          </Entity>
+        this.tweets.push(
+          <Tweet key={i} tweet={this.props.signals[i].tweet} position={this.usersPos[i]}
+            radius={this.props.radius} name={userData.results[i].name.first}></Tweet>
         );
       }
     }
@@ -73,6 +68,7 @@ class Users extends React.Component {
     return (
       <Entity id="users_GRP">
         {this.users}
+        {this.tweets}
       </Entity>
     );
   }

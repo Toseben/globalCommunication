@@ -18,7 +18,7 @@ AFRAME.registerComponent('tweet', {
     var d = this.data;
 
     var radius = d.radius, segments = 64, rings = 32;
-    var geometry = new THREE.SphereBufferGeometry( radius, segments, rings );
+    var geometry = new THREE.SphereBufferGeometry( radius * 1.025, segments, rings );
     var mesh = this.el.getOrCreateObject3D('mesh', THREE.Mesh);
     mesh.geometry = geometry;
 

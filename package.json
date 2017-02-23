@@ -44,7 +44,7 @@
   "bugs": {
     "url": "https://github.com/toseben/globalCommunication/issues"
   },
-  "homepage": "https://github.com/toseben/globalCommunication",
+  "homepage": "https://toseben.github.io/globalCommunication/gh-pages",
   "devDependencies": {
     "babel": "^6.3.13",
     "babel-core": "^6.3.15",

@@ -7,9 +7,7 @@ class AContainer extends React.Component {
   render () {
 
     return (
-      <Scene>
-        <a-sky color="#1b242e"></a-sky>
-      </Scene>
+      <div></div>
     );
   }
 }

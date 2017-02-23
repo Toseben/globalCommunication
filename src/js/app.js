@@ -9,7 +9,7 @@ import { getUsers } from './utils/randomUserApi.js'
 getUsers().then(userData => {
 
   ReactDOM.render(
-    <AContainer userData={userData}/>,
+    <Button></Button>,
     document.getElementById('root')
   );
 

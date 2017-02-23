@@ -21642,11 +21642,13 @@
 
 	      var radius = "1";
 
+	      console.log('moi');
+
 	      return _react2.default.createElement(
 	        _aframeReact.Scene,
 	        null,
 	        _react2.default.createElement(_Camera2.default, null),
-	        _react2.default.createElement(_Earth2.default, { src: 'url(../../assets/earth.jpg)', radius: radius }),
+	        _react2.default.createElement(_Earth2.default, { src: 'url(/globalCommunication/gh-pages/src/assets/earth.jpg)', radius: radius }),
 	        _react2.default.createElement(_Users2.default, { userData: userData, radius: radius, signals: this.state.signals }),
 	        _react2.default.createElement('a-sky', { color: '#1b242e' })
 	      );
@@ -22374,7 +22376,7 @@
 	    var radius = d.radius,
 	        segments = 64,
 	        rings = 32;
-	    var geometry = new THREE.SphereBufferGeometry(radius, segments, rings);
+	    var geometry = new THREE.SphereBufferGeometry(radius * 1.025, segments, rings);
 	    var mesh = this.el.getOrCreateObject3D('mesh', THREE.Mesh);
 	    mesh.geometry = geometry;
 
